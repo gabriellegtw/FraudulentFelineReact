@@ -1,11 +1,12 @@
 import { useState } from 'react';
+import cat from "./Cat.png"
 
 function Game() {
   const [speaking, setSpeaking] = useState("");
 
   return (
     <div className="game-container">
-      <h1>Welcome to the Game!</h1>
+      <img alt = "cat" src = {cat} width = "400" height = "300"></img>
       <p>{speaking}</p>
       <button onClick = {() => {
         const catSpeak = "yap yap";
