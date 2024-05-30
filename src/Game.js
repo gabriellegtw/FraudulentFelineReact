@@ -4,9 +4,13 @@ function Game() {
   return (
     <div className="game-container">
       <h1>Welcome to the Game!</h1>
-      {/* Game content goes here */}
+      <button>microphone talk</button>
+      <button >checklist</button>
+      <button>phone</button>
+      <button>case file</button>
     </div>
   );
 }
 
 export default Game;
+
