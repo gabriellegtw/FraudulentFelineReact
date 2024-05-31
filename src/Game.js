@@ -10,7 +10,6 @@ import "./Game.css";
 
 function Game() {
   const initialCaseFileContent = "Message says “This is BOP (Bank of Pussy). There was a withdrawal of S$369 with your BOP account on 15 December at 20:31.\nIf unauthorised, visit https://bankofpussyhelpline.securesg.site to stop the process.”";
-  const initialCaseFileContent = "Message says “This is BOP (Bank of Pussy). There was a withdrawal of S$369 with your BOP account on 15 December at 20:31.\nIf unauthorised, visit https://bankofpussyhelpline.securesg.site to stop the process.”";
   const [speaking, setSpeaking] = useState("");
   const [showCaseFile, setShowCaseFile] = useState(false);
   const [messageVisible, setMessageVisible] = useState(false);
@@ -40,8 +39,7 @@ function Game() {
 
   const handleMicrophoneClick = () => {
     let catSpeak;
-    let newCaseFileContent = caseFileContent; 
-    let newCaseFileContent = caseFileContent; 
+    let newCaseFileContent = caseFileContent;  
 
     if (clickCount === 0) {
       catSpeak = "I received an SMS today from BOP (Bank of Pussy) saying that there have been unauthorized attempts to access my bank account. There is also a link in the SMS to stop the attempt. Should I click the link?";

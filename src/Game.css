@@ -61,44 +61,8 @@ body {
 
 .regular-button:hover {
     opacity: 70%;
-}.image-button {
-    padding: 0px;
-    border: none;
 }
-.report-button {
-    font-size: 1.5em;
-    color: white;
-    background-color: #007bff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    text-decoration: none;
-    margin-bottom: 20px;
-  }
-  
-  .custom-button {
-    display: inline-block;
-    padding: 10px 20px;
-    font-size: 15px;
-    color: white;
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: #2785ea;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    text-decoration: none;
-  }
-  
-  .custom-button:hover {
-    background-color: #0065d0;
-  }
 
-  .button-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap: 50px;
-    align-items: flex-start;
-  }
+.regular-button:hover {
+    opacity: 70%;
+}
