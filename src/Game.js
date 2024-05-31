@@ -138,11 +138,10 @@ function Game() {
             </div>
           </div>
       )}
-      <input type = "image" id = "phone" alt="phone" src={phone} width="250" height="250" onClick = {() => {navigate("/phone")}}/>
       <input type = "image" id = "file" alt="case file" src={caseFileImage} width="250" height="250" onClick={() => setShowCaseFile(true)}/>
+      <input type = "image" id = "phone" alt="phone" src={phone} width="250" height="250" onClick = {() => {navigate("/phone")}}/>
       <audio ref={audioRef} src={catAudio} />
     </div>
-  );
   </div>
 )}
 
