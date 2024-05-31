@@ -1,10 +1,10 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom'; 
+import { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import cat from "./images/Cat.png";
 import caseFileImage from "./images/file.png";
-import phone from "./images/phone.png";
 import mic from "./images/mic.png"; 
 import checklist from "./images/checklist.png"; 
+import catAudio from './meow.mp3';
 
 function Game() {
   const initialCaseFileContent = "Message says “This is BOP (Bank of Pussy). There was a withdrawal of S$369 with your BOP account on 15 December at 20:31.\nIf unauthorised, visit https://bankofpussyhelpline.securesg.site to stop the process.”";
@@ -21,6 +21,14 @@ function Game() {
       {id: 4, label: "Called the lawyer for legal advice"},
       {id: 5, label: "Called the police after confirming it is a scam"},
   ]);
+
+  const audioRef = useRef(null);
+
+  useEffect(() => {
+    if (speaking && audioRef.current) {
+      audioRef.current.play();
+    }
+  }, [speaking]);
 
   const handleMicrophoneClick = () => {
     let catSpeak;
@@ -123,13 +131,15 @@ function Game() {
             </div>
           </div>
       )}
-      <button><Link to="/phone"><img alt="phone" src={phone} width="50" height="50" /></Link></button>
+      <button>
+        <Link to="/phone"><img alt="phone" src={phone} width="50" height="50" /></Link>
+      </button>
       <button onClick={() => setShowCaseFile(true)}>
         <img alt="case file" src={caseFileImage} width="50" height="50" />
       </button>
+      <audio ref={audioRef} src={catAudio} />
     </div>
   );
 }
 
 export default Game;
-
