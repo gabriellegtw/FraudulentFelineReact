@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import cat from "./images/Cat.png";
 import caseFileImage from "./images/file.png";
 import mic from "./images/mic.png"; 
+import phone from "./images/phone.png";
 import checklist from "./images/checklist.png"; 
 import catAudio from './meow.mp3';
 
