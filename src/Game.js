@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import cat from "./images/cat.png";
 import caseFileImage from "./images/file.png";
 import mic from "./images/mic.png"; 
@@ -25,6 +25,7 @@ function Game() {
   ]);
 
   const audioRef = useRef(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (speaking && audioRef.current) {
@@ -137,8 +138,7 @@ function Game() {
             </div>
           </div>
       )}
-      <input type = "image" id = "phone" alt="phone" src={phone} width="250" height="250" />
-        <Link to="/phone"></Link>
+      <input type = "image" id = "phone" alt="phone" src={phone} width="250" height="250" onClick = {() => {navigate("/phone")}}/>
       <input type = "image" id = "file" alt="case file" src={caseFileImage} width="250" height="250" onClick={() => setShowCaseFile(true)}/>
       <audio ref={audioRef} src={catAudio} />
     </div>
