@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import cat from "./images/cat.png";
+import cat from "./images/Cat.png";
 import caseFileImage from "./images/file.png";
 import mic from "./images/mic.png"; 
 import phone from "./images/phone.png";
@@ -16,6 +16,7 @@ function Game() {
   const [clickCount, setClickCount] = useState(0);
   const [caseFileContent, setCaseFileContent] = useState(initialCaseFileContent);
   const [showChecklist, setShowChecklist] = useState(false);
+  const [showReportContent, setShowReportContent] = useState(false);
   const [items, setItems] = useState([
       {id: 1, label: "Asked customer for more information"},
       {id: 2, label: "Highlighted suspicious details in case file"},
@@ -64,6 +65,7 @@ function Game() {
 
   const handleBackClick = () => {
     setShowChecklist(false);
+    setShowReportContent(false);
   };
 
   const escapeRegExp = (string) => {
@@ -140,6 +142,19 @@ function Game() {
       )}
       <input type = "image" id = "file" alt="case file" src={caseFileImage} width="250" height="250" onClick={() => setShowCaseFile(true)}/>
       <input type = "image" id = "phone" alt="phone" src={phone} width="250" height="250" onClick = {() => {navigate("/phone")}}/>
+      <button onClick={() => setShowReportContent(true)}>report</button>
+      {showReportContent && (
+        <div className="overlay">
+          <div className="white-paper">
+          <p>Report to the police? (Click yes only if you are sure it is a scam)</p>
+            <div className='button-container'>
+              <Link to="/winpage" className="custom-button">Yes</Link>
+              <Link to="/losepage" className="custom-button">No</Link>
+            </div>
+            <button onClick={handleBackClick}>Back</button>
+          </div>
+        </div>
+      )}
       <audio ref={audioRef} src={catAudio} />
     </div>
   </div>
