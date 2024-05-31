@@ -104,7 +104,9 @@ function Game() {
             </div>
           </div>
       )}
-      <button className='image-button'>phone</button>
+      <button className='image-button'>
+        <img alt="phone" src={phone} width="50" height="50" />
+      </button>
       <button onClick={() => setShowCaseFile(true)}>
         <img alt="case file" src={caseFileImage} width="50" height="50" />
       </button>
