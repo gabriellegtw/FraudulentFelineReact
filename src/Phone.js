@@ -4,10 +4,14 @@ import './Phone.css'; // For styling
 
 function Phone() {
     const [enteredNumbers, setEnteredNumbers] = useState('');
+    const [displayNumbers, setDisplayNumbers] = useState('');
 
     const handleNumberPress = (number) => {
         // Append the pressed number to the entered numbers
-        setEnteredNumbers(prevEnteredNumbers => prevEnteredNumbers + number);
+        const newEnteredNumbers = enteredNumbers + number;
+        // setEnteredNumbers(prevEnteredNumbers => prevEnteredNumbers + number);
+        setEnteredNumbers(newEnteredNumbers);
+        setDisplayNumbers(newEnteredNumbers);
 
         // Check if the entered numbers match the secret code
         if (enteredNumbers + number === '87654321') {
@@ -24,6 +28,7 @@ function Phone() {
     const handleClear = () => {
         // Clear the entered numbers
         setEnteredNumbers('');
+        setDisplayNumbers('');
     };
 
   return (
@@ -35,7 +40,9 @@ function Phone() {
             <h3>To call lawyer, press "87654321"</h3>
             <h3>To call bank, press "98765432"</h3>
         </div>
+        
             <div class="leftPanel">
+            <div className="display-bar">{displayNumbers}</div>
         <div class="numbers">
             <div onClick={() => handleNumberPress('1')}>1</div>
             <div onClick={() => handleNumberPress('2')}>2</div>
@@ -54,7 +61,7 @@ function Phone() {
         <div class="numbers">
             <div onClick={() => handleClear()}>Clear</div>
             <div>0</div>
-            <div><Link to = "/game">Exit</Link></div> 
+            <div><Link to = "/game" className="custom-link">Exit</Link></div> 
         </div>
         </div>
       </div>
