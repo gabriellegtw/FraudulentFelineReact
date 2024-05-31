@@ -10,17 +10,22 @@ import "./Game.css";
 
 function Game() {
   const initialCaseFileContent = "Message says “This is BOP (Bank of Pussy). There was a withdrawal of S$369 with your BOP account on 15 December at 20:31.\nIf unauthorised, visit https://bankofpussyhelpline.securesg.site to stop the process.”";
+  const initialCaseFileContent = "Message says “This is BOP (Bank of Pussy). There was a withdrawal of S$369 with your BOP account on 15 December at 20:31.\nIf unauthorised, visit https://bankofpussyhelpline.securesg.site to stop the process.”";
   const [speaking, setSpeaking] = useState("");
   const [showCaseFile, setShowCaseFile] = useState(false);
   const [messageVisible, setMessageVisible] = useState(false);
   const [clickCount, setClickCount] = useState(0);
   const [caseFileContent, setCaseFileContent] = useState(initialCaseFileContent);
   const [showChecklist, setShowChecklist] = useState(false);
+  const [showReportContent, setShowReportContent] = useState(false);
   const [items, setItems] = useState([
+      {id: 1, label: "Asked customer for more information"},
+      {id: 2, label: "Highlighted suspicious details in case file"},
       {id: 1, label: "Asked customer for more information"},
       {id: 2, label: "Highlighted suspicious details in case file"},
       {id: 3, label: "Called the bank for more details"},
       {id: 4, label: "Called the lawyer for legal advice"},
+      {id: 5, label: "Called the police after confirming it is a scam"},
       {id: 5, label: "Called the police after confirming it is a scam"},
   ]);
 
@@ -36,6 +41,7 @@ function Game() {
   const handleMicrophoneClick = () => {
     let catSpeak;
     let newCaseFileContent = caseFileContent; 
+    let newCaseFileContent = caseFileContent; 
 
     if (clickCount === 0) {
       catSpeak = "I received an SMS today from BOP (Bank of Pussy) saying that there have been unauthorized attempts to access my bank account. There is also a link in the SMS to stop the attempt. Should I click the link?";
@@ -48,6 +54,7 @@ function Game() {
     setSpeaking(catSpeak);
     setMessageVisible(true);
     setClickCount(prevCount => prevCount + 1);
+    setCaseFileContent(newCaseFileContent);
     setCaseFileContent(newCaseFileContent);
   };
 
@@ -94,6 +101,7 @@ function Game() {
             <button className ="regular-button" onClick={handleHighlightClick}>Highlight</button>
             <button className ="regular-button" onClick={handleRemoveHighlightClick}>Remove all highlights</button>
             <button className ="regular-button" onClick={() => setShowCaseFile(false)}>Close</button>
+
           </div>
         </div>
       )}
