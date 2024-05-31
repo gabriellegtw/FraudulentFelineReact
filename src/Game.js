@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom'; 
 import cat from "./images/Cat.png";
 import caseFileImage from "./images/casefile.png"; // Ensure you have the case file image imported
 import mic from "./images/mic.png"; // Import the microphone image
@@ -103,7 +104,7 @@ function Game() {
             </div>
           </div>
       )}
-      <button>phone</button>
+      <button><Link to="/phone">phone</Link></button>
       <button onClick={() => setShowCaseFile(true)}>
         <img alt="case file" src={caseFileImage} width="50" height="50" />
       </button>
