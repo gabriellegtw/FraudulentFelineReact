@@ -18,7 +18,7 @@ body {
 
 #background-area {
     display: grid;
-    grid-template-columns: 33% 15% 52%;
+    grid-template-columns: 33% 25% 40%;
 }
 
 #cat, #mic, #speech {
@@ -30,12 +30,35 @@ body {
     grid-template-columns: auto auto auto;
 }
 
-#speech {
+#speech-grid {
     align-content: center;
-    border: 2px;
-    border-color: #443742;
+}
+
+#speech {
+    text-align: center;
+    align-content: center;
+    border-radius: 10px;
+    padding: 1rem;
+    /*border-width: 30px;
+    border-color: #443742;*/
+    background-color: white;
 }
 
 #file, #phone, #checklist {
     grid-row: 1
+}
+
+.regular-button {
+    padding: 0.5rem;
+    margin: 0.5rem;
+    background-color: white;
+    border-color: #443742;
+    color: #443742;
+    border-width: 1.5px;
+    border-radius: 3px;
+    font-size: 12pt;
+}
+
+.regular-button:hover {
+    opacity: 70%;
 }

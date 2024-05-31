@@ -91,24 +91,26 @@ function Game() {
         <div className="overlay">
           <div className="white-paper">
             <pre dangerouslySetInnerHTML={{ __html: caseFileContent }}></pre>
-            <button onClick={handleHighlightClick}>Highlight</button>
-            <button onClick={handleRemoveHighlightClick}>Remove all highlights</button>
-            <button onClick={() => setShowCaseFile(false)}>Close</button>
+            <button className ="regular-button" onClick={handleHighlightClick}>Highlight</button>
+            <button className ="regular-button" onClick={handleRemoveHighlightClick}>Remove all highlights</button>
+            <button className ="regular-button" onClick={() => setShowCaseFile(false)}>Close</button>
           </div>
         </div>
       )}
       <div id="background-area">
         <div id = "cat">
-        <img alt="cat" src={cat} width="375" height="260" />
+        <img alt="cat" src={cat} width="375" height="263" />
         </div>
         <div id = "mic">
-        <input type = "image" alt = "mic" src = {mic} width="250" height="258" onClick={handleMicrophoneClick} className='image-button'/>
+        <input type = "image" alt = "mic" src = {mic} width="250" height="262" onClick={handleMicrophoneClick} className='image-button'/>
         </div>
-        <div>
+        <div id = "speech-grid">
         {messageVisible && (
           <>
+             <div id = "speech">
             <p>{speaking}</p>
-            <button onClick={handleContinueClick}>Continue</button>
+            <button className ="regular-button" onClick={handleContinueClick}>Continue</button>
+            </div>
           </>
         )}
         </div>
@@ -133,7 +135,7 @@ function Game() {
                     </li>
                   ))}
                 </ul>
-                <button onClick={handleBackClick}>Back</button>
+                <button className ="regular-button" onClick={handleBackClick}>Back</button>
               </div>
             </div>
           </div>
