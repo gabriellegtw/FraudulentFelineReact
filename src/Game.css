@@ -12,13 +12,20 @@ body {
     position:relative;
 }
 
+body {
+    background-image: url("./images/background.png");
+    background-size: cover;
+    background-position:0% 0%;
+    position:relative;
+}
+
 .image-button {
     flex: auto;
 }
 
 #background-area {
     display: grid;
-    grid-template-columns: 33% 15% 52%;
+    grid-template-columns: 33% 25% 40%;
 }
 
 #cat, #mic, #speech {
@@ -27,17 +34,44 @@ body {
 
 #table {
     display: grid;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: auto auto auto auto;
+}
+
+#speech-grid {
+    align-content: center;
 }
 
 #speech {
+    text-align: center;
     align-content: center;
-    border: 2px;
-    border-color: #443742;
+    border-radius: 10px;
+    padding: 1rem;
+    /*border-width: 30px;
+    border-color: #443742;*/
+    background-color: white;
 }
 
 #file, #phone, #checklist {
     grid-row: 1
+}
+
+.regular-button {
+    padding: 0.5rem;
+    margin: 0.5rem;
+    background-color: white;
+    border-color: #443742;
+    color: #443742;
+    border-width: 1.5px;
+    border-radius: 3px;
+    font-size: 12pt;
+}
+
+.regular-button:hover {
+    opacity: 70%;
+}
+
+.regular-button:hover {
+    opacity: 70%;
 }
 
 .report-button {
@@ -51,7 +85,7 @@ body {
     margin-bottom: 20px;
   }
   
-  .custom-button {
+.custom-button {
     display: inline-block;
     padding: 10px 20px;
     font-size: 15px;

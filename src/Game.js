@@ -1,10 +1,11 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import cat from "./images/Cat.png";
+import cat from "./images/cat.png";
 import caseFileImage from "./images/file.png";
 import mic from "./images/mic.png"; 
 import phone from "./images/phone.png";
 import checklist from "./images/checklist.png"; 
+import report from "./images/report.png";
 import catAudio from './meow.mp3';
 import "./Game.css";
 
@@ -36,7 +37,7 @@ function Game() {
 
   const handleMicrophoneClick = () => {
     let catSpeak;
-    let newCaseFileContent = caseFileContent; 
+    let newCaseFileContent = caseFileContent;  
 
     if (clickCount === 0) {
       catSpeak = "I received an SMS today from BOP (Bank of Pussy) saying that there have been unauthorized attempts to access my bank account. There is also a link in the SMS to stop the attempt. Should I click the link?";
@@ -49,6 +50,7 @@ function Game() {
     setSpeaking(catSpeak);
     setMessageVisible(true);
     setClickCount(prevCount => prevCount + 1);
+    setCaseFileContent(newCaseFileContent);
     setCaseFileContent(newCaseFileContent);
   };
 
@@ -93,24 +95,27 @@ function Game() {
         <div className="overlay">
           <div className="white-paper">
             <pre dangerouslySetInnerHTML={{ __html: caseFileContent }}></pre>
-            <button onClick={handleHighlightClick}>Highlight</button>
-            <button onClick={handleRemoveHighlightClick}>Remove all highlights</button>
-            <button onClick={() => setShowCaseFile(false)}>Close</button>
+            <button className ="regular-button" onClick={handleHighlightClick}>Highlight</button>
+            <button className ="regular-button" onClick={handleRemoveHighlightClick}>Remove all highlights</button>
+            <button className ="regular-button" onClick={() => setShowCaseFile(false)}>Close</button>
+
           </div>
         </div>
       )}
       <div id="background-area">
         <div id = "cat">
-        <img alt="cat" src={cat} width="375" height="260" />
+        <img alt="cat" src={cat} width="375" height="263" />
         </div>
         <div id = "mic">
-        <input type = "image" alt = "mic" src = {mic} width="250" height="258" onClick={handleMicrophoneClick} className='image-button'/>
+        <input type = "image" alt = "mic" src = {mic} width="250" height="262" onClick={handleMicrophoneClick} className='image-button'/>
         </div>
-        <div>
+        <div id = "speech-grid">
         {messageVisible && (
           <>
+             <div id = "speech">
             <p>{speaking}</p>
-            <button onClick={handleContinueClick}>Continue</button>
+            <button className ="regular-button" onClick={handleContinueClick}>Continue</button>
+            </div>
           </>
         )}
         </div>
@@ -135,14 +140,14 @@ function Game() {
                     </li>
                   ))}
                 </ul>
-                <button onClick={handleBackClick}>Back</button>
+                <button className ="regular-button" onClick={handleBackClick}>Back</button>
               </div>
             </div>
           </div>
       )}
       <input type = "image" id = "file" alt="case file" src={caseFileImage} width="250" height="250" onClick={() => setShowCaseFile(true)}/>
       <input type = "image" id = "phone" alt="phone" src={phone} width="250" height="250" onClick = {() => {navigate("/phone")}}/>
-      <button onClick={() => setShowReportContent(true)}>report</button>
+      <input type = "image" id = "report" alt = "report" src = {report} width="250" height="250" onClick={() => setShowReportContent(true)}report />
       {showReportContent && (
         <div className="overlay">
           <div className="white-paper">
@@ -151,7 +156,7 @@ function Game() {
               <Link to="/winpage" className="custom-button">Yes</Link>
               <Link to="/losepage" className="custom-button">No</Link>
             </div>
-            <button onClick={handleBackClick}>Back</button>
+            <button className = "regular-button" onClick={handleBackClick}>Back</button>
           </div>
         </div>
       )}
