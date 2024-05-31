@@ -1,11 +1,12 @@
 import { useState, useEffect, useRef } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import cat from "./images/Cat.png";
 import caseFileImage from "./images/file.png";
 import mic from "./images/mic.png"; 
+import phone from "./images/phone.png";
 import checklist from "./images/checklist.png"; 
 import catAudio from './meow.mp3';
-import { Link } from 'react-router-dom';
-import './Game.css';
+import "./Game.css";
 
 function Game() {
   const initialCaseFileContent = "Message says “This is BOP (Bank of Pussy). There was a withdrawal of S$369 with your BOP account on 15 December at 20:31.\nIf unauthorised, visit https://bankofpussyhelpline.securesg.site to stop the process.”";
@@ -25,6 +26,7 @@ function Game() {
   ]);
 
   const audioRef = useRef(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (speaking && audioRef.current) {
@@ -86,7 +88,7 @@ function Game() {
   };
 
   return (
-    <div className="game-container" style={{ position: 'relative' }}>
+    <div className="game-container"> 
       {showCaseFile && (
         <div className="overlay">
           <div className="white-paper">
@@ -97,21 +99,25 @@ function Game() {
           </div>
         </div>
       )}
-      <div id="cat-speech">
-        <img alt="cat" src={cat} width="400" height="300" />
+      <div id="background-area">
+        <div id = "cat">
+        <img alt="cat" src={cat} width="375" height="260" />
+        </div>
+        <div id = "mic">
+        <input type = "image" alt = "mic" src = {mic} width="250" height="258" onClick={handleMicrophoneClick} className='image-button'/>
+        </div>
+        <div>
         {messageVisible && (
           <>
             <p>{speaking}</p>
             <button onClick={handleContinueClick}>Continue</button>
           </>
         )}
+        </div>
       </div>
-      <button onClick={handleMicrophoneClick}>
-        <img alt="mic" src={mic} width="50" height="50" />
-      </button>
-      <button onClick={() => setShowChecklist(true)}>
-        <img alt="checklist" src={checklist} width="50" height="50" />
-      </button>
+      <br></br>
+      <div id = "table">
+      <input id = "checklist" type = "image" alt = "checklist" src = {checklist} className='image-button' width="250" height="250" onClick={() => setShowChecklist(true)} />
       {showChecklist && (
           <div className="overlay">
             <div className="white-paper">
@@ -134,10 +140,8 @@ function Game() {
             </div>
           </div>
       )}
-      <button>phone</button>
-      <button onClick={() => setShowCaseFile(true)}>
-        <img alt="case file" src={caseFileImage} width="50" height="50" />
-      </button>
+      <input type = "image" id = "file" alt="case file" src={caseFileImage} width="250" height="250" onClick={() => setShowCaseFile(true)}/>
+      <input type = "image" id = "phone" alt="phone" src={phone} width="250" height="250" onClick = {() => {navigate("/phone")}}/>
       <button onClick={() => setShowReportContent(true)}>report</button>
       {showReportContent && (
         <div className="overlay">
@@ -153,8 +157,8 @@ function Game() {
       )}
       <audio ref={audioRef} src={catAudio} />
     </div>
-  );
-}
+  </div>
+)}
 
 export default Game;
 

@@ -1,7 +1,45 @@
-.image-button {
-    padding: 0px;
-    border: none;
+body {
+    background-image: url("./images/background.png");
+    background-size: cover;
+    background-position:0% 0%;
+    position:relative;
 }
+
+body {
+    background-image: url("./images/background.png");
+    background-size: cover;
+    background-position:0% 0%;
+    position:relative;
+}
+
+.image-button {
+    flex: auto;
+}
+
+#background-area {
+    display: grid;
+    grid-template-columns: 33% 15% 52%;
+}
+
+#cat, #mic, #speech {
+    grid-row: 1;
+}
+
+#table {
+    display: grid;
+    grid-template-columns: auto auto auto;
+}
+
+#speech {
+    align-content: center;
+    border: 2px;
+    border-color: #443742;
+}
+
+#file, #phone, #checklist {
+    grid-row: 1
+}
+
 .report-button {
     font-size: 1.5em;
     color: white;
