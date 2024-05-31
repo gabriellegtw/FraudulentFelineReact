@@ -1,12 +1,11 @@
 import { useState, useEffect, useRef } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import cat from "./images/cat.png";
+import cat from "./images/Cat.png";
 import caseFileImage from "./images/file.png";
 import mic from "./images/mic.png"; 
-import phone from "./images/phone.png";
 import checklist from "./images/checklist.png"; 
 import catAudio from './meow.mp3';
-import "./Game.css";
+import { Link } from 'react-router-dom';
+import './Game.css';
 
 function Game() {
   const initialCaseFileContent = "Message says “This is BOP (Bank of Pussy). There was a withdrawal of S$369 with your BOP account on 15 December at 20:31.\nIf unauthorised, visit https://bankofpussyhelpline.securesg.site to stop the process.”";
@@ -16,6 +15,7 @@ function Game() {
   const [clickCount, setClickCount] = useState(0);
   const [caseFileContent, setCaseFileContent] = useState(initialCaseFileContent);
   const [showChecklist, setShowChecklist] = useState(false);
+  const [showReportContent, setShowReportContent] = useState(false);
   const [items, setItems] = useState([
       {id: 1, label: "Asked customer for more information"},
       {id: 2, label: "Highlighted suspicious details in case file"},
@@ -25,7 +25,6 @@ function Game() {
   ]);
 
   const audioRef = useRef(null);
-  const navigate = useNavigate();
 
   useEffect(() => {
     if (speaking && audioRef.current) {
@@ -64,6 +63,7 @@ function Game() {
 
   const handleBackClick = () => {
     setShowChecklist(false);
+    setShowReportContent(false);
   };
 
   const escapeRegExp = (string) => {
@@ -86,7 +86,7 @@ function Game() {
   };
 
   return (
-    <div className="game-container"> 
+    <div className="game-container" style={{ position: 'relative' }}>
       {showCaseFile && (
         <div className="overlay">
           <div className="white-paper">
@@ -97,25 +97,21 @@ function Game() {
           </div>
         </div>
       )}
-      <div id="background-area">
-        <div id = "cat">
-        <img alt="cat" src={cat} width="375" height="260" />
-        </div>
-        <div id = "mic">
-        <input type = "image" alt = "mic" src = {mic} width="250" height="258" onClick={handleMicrophoneClick} className='image-button'/>
-        </div>
-        <div>
+      <div id="cat-speech">
+        <img alt="cat" src={cat} width="400" height="300" />
         {messageVisible && (
           <>
             <p>{speaking}</p>
             <button onClick={handleContinueClick}>Continue</button>
           </>
         )}
-        </div>
       </div>
-      <br></br>
-      <div id = "table">
-      <input id = "checklist" type = "image" alt = "checklist" src = {checklist} className='image-button' width="250" height="250" onClick={() => setShowChecklist(true)} />
+      <button onClick={handleMicrophoneClick}>
+        <img alt="mic" src={mic} width="50" height="50" />
+      </button>
+      <button onClick={() => setShowChecklist(true)}>
+        <img alt="checklist" src={checklist} width="50" height="50" />
+      </button>
       {showChecklist && (
           <div className="overlay">
             <div className="white-paper">
@@ -138,13 +134,28 @@ function Game() {
             </div>
           </div>
       )}
-      <input type = "image" id = "phone" alt="phone" src={phone} width="250" height="250" onClick = {() => {navigate("/phone")}}/>
-      <input type = "image" id = "file" alt="case file" src={caseFileImage} width="250" height="250" onClick={() => setShowCaseFile(true)}/>
+      <button>phone</button>
+      <button onClick={() => setShowCaseFile(true)}>
+        <img alt="case file" src={caseFileImage} width="50" height="50" />
+      </button>
+      <button onClick={() => setShowReportContent(true)}>report</button>
+      {showReportContent && (
+        <div className="overlay">
+          <div className="white-paper">
+          <p>Report to the police? (Click yes only if you are sure it is a scam)</p>
+            <div className='button-container'>
+              <Link to="/winpage" className="custom-button">Yes</Link>
+              <Link to="/losepage" className="custom-button">No</Link>
+            </div>
+            <button onClick={handleBackClick}>Back</button>
+          </div>
+        </div>
+      )}
       <audio ref={audioRef} src={catAudio} />
     </div>
   );
-  </div>
-)}
+}
 
 export default Game;
+
 

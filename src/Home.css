@@ -1,28 +1,24 @@
-@import url(https://fonts.googleapis.com/css?family=Cedarville+Cursive:regular);
-
 .home-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     height: 100vh;
-    background-color: #EDD9A3;
+    background-color: #f8f9fa;
   }
   
   .title {
-    /* font-family: 'Cursive', sans-serif; */
-    font-family: 'Cedarville Cursive', cursive;
+    font-family: 'Cursive', sans-serif;
     font-size: 4em;
     color: #333;
-    margin-bottom: -40px;
+    margin-bottom: 20px;
   }
   
   .start-button {
-    font-family: 'Cedarville Cursive', cursive;
-    font-size: 2em;
+    font-size: 1.5em;
     color: white;
-    background-color: #846C5B;
-    padding: 1px 80px;
+    background-color: #007bff;
+    padding: 10px 20px;
     border: none;
     border-radius: 5px;
     text-decoration: none;
@@ -30,14 +26,26 @@
   }
   
   .start-button:hover {
-    color: #846C5B;
-    background-color: white;
+    background-color: #0056b3;
   }
   
   .subtitle {
-    font-family: 'Cedarville Cursive', cursive;
-    font-size: 1.8em;
+    font-size: 1.2em;
     color: #666;
-    margin-bottom: 30px;
+  }
+  .winlosetitle {
+    font-family: 'Cursive', sans-serif;
+    font-size: 2em;
+    color: #333;
+    margin-bottom: 20px;
+  }
+
+  .winlose-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f8f9fa;
   }
   
