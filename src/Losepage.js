@@ -4,7 +4,7 @@ import './Home.css'; // For styling
 
 function Losepage() {
     return (
-        <div className='losepage-container'>
+        <div className='winlose-container'>
             <h1 className='winlosetitle'>Oh no! You did not manage to identify the scam</h1>
             <button>Restart</button>
         </div>

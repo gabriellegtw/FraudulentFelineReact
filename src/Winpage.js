@@ -4,7 +4,7 @@ import './Home.css'; // For styling
 
 function Winpage() {
     return (
-        <div className='winpage-container'>
+        <div className='winlose-container'>
             <h1 className='winlosetitle'>Congratulations! You have correctly identified that it is a scam</h1>
             <button>Continue</button>
         </div>
