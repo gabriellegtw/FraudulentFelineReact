@@ -2,6 +2,8 @@ import { useState } from 'react';
 import cat from "./images/Cat.png";
 import caseFileImage from "./images/casefile.png"; // Ensure you have the case file image imported
 import mic from "./images/mic.png"; // Import the microphone image
+import checklist from "./images/checklist.jpg"; //Import checklist image
+
 
 function Game() {
   const initialCaseFileContent = "Message says “This is BOP. There was a withdrawal of S$369 with your BOP account on 15 December at 20:31.\nIf unauthorised, visit https://jsnkgkdfgsl.securesg.site to stop the process.”";
@@ -10,7 +12,16 @@ function Game() {
   const [messageVisible, setMessageVisible] = useState(false);
   const [clickCount, setClickCount] = useState(0);
   const [caseFileContent, setCaseFileContent] = useState(initialCaseFileContent);
+  const [showChecklist, setShowChecklist] = useState(false);
+  const [items, setItems] = useState([
+      {id: 1, label: "Ask customer for more information"},
+      {id: 2, label: "Noted down suspicious details in case file"},
+      {id: 3, label: "Called the bank for more details"},
+      {id: 4, label: "Called the lawyer for legal advice"},
+      {id: 3, label: "Called the police after confirming it is a scam"},
+  ]);
 
+    
   const handleMicrophoneClick = () => {
     let catSpeak;
     let newCaseFileContent = caseFileContent; // Store current case file content
@@ -35,6 +46,16 @@ function Game() {
     setSpeaking("");
   };
 
+  const toggleItem = (index) => {
+    const newItems = [...items];
+    newItems[index].completed = !newItems[index].completed;
+    setItems(newItems);
+  };
+
+  const handleBackClick = () => {
+    setShowChecklist(false);
+  }
+
   return (
     <div className="game-container" style={{ position: 'relative' }}>
       {showCaseFile && (
@@ -57,7 +78,31 @@ function Game() {
       <button onClick={handleMicrophoneClick}>
         <img alt="mic" src={mic} width="50" height="50" />
       </button>
-      <button>checklist</button>
+      <button onClick={() => setShowChecklist(true)}>
+        <img alt="checklist" src={checklist} width="50" height="50" />
+      </button>
+      {showChecklist && (
+          <div className="overlay">
+            <div className="white-paper">
+              <div>
+                <p>Checklist</p>
+                <ul>
+                  {items.map((item, index) => (
+                    <li key={index}>
+                      <label>
+                        <input 
+                          type="checkbox" checked={item.completed} onChange={() => toggleItem(index)}
+                        />
+                      {item.label}
+                      </label>
+                    </li>
+                  ))}
+                </ul>
+                <button onClick={handleBackClick}>Back</button>
+              </div>
+            </div>
+          </div>
+      )}
       <button>phone</button>
       <button onClick={() => setShowCaseFile(true)}>
         <img alt="case file" src={caseFileImage} width="50" height="50" />
