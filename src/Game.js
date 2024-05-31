@@ -6,7 +6,6 @@ import mic from "./images/mic.png";
 import phone from "./images/phone.png";
 import checklist from "./images/checklist.png"; 
 import catAudio from './meow.mp3';
-import report from './images/report.png'
 import "./Game.css";
 
 function Game() {
