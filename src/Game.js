@@ -58,30 +58,34 @@ function Game() {
   }
 
   return (
-    <div className="game-container" style={{ position: 'relative' }}>
+    <div className="game-container">
       {showCaseFile && (
         <div className="overlay">
           <div className="white-paper">
             <pre>{caseFileContent}</pre>
-            <button className='image-button'onClick={() => setShowCaseFile(false)}>Close</button>
+            <button onClick={() => setShowCaseFile(false)}>Close</button>
           </div>
         </div>
       )}
-      <div id="cat-speech">
-        <img alt="cat" src={cat} width="400" height="300" />
+      <div id="background-area">
+        <div id = "cat">
+        <img alt="cat" src={cat} width="375" height="262" />
+        </div>
+        <div id = "mic">
+        <input type = "image" alt = "mic" src = {mic} width="250" height="262" onClick={handleMicrophoneClick} className='image-button'/>
+        </div>
+        <div>
         {messageVisible && (
           <>
             <p>{speaking}</p>
             <button onClick={handleContinueClick}>Continue</button>
           </>
         )}
+        </div>
       </div>
-      <button onClick={handleMicrophoneClick} className='image-button'>
-        <img alt="mic" src={mic} width="50" height="50" />
-      </button>
-      <button className='image-button' onClick={() => setShowChecklist(true)}>
-        <img alt="checklist" src={checklist} width="50" height="50" />
-      </button>
+      <br></br>
+      <div id = "table">
+      <input id = "checklist" type = "image" alt = "checklist" src = {checklist} className='image-button' width="250" height="250" onClick={() => setShowChecklist(true)} />
       {showChecklist && (
           <div className="overlay">
             <div className="white-paper">
@@ -104,12 +108,9 @@ function Game() {
             </div>
           </div>
       )}
-      <button className='image-button'>
-        <img alt="phone" src={phone} width="50" height="50" />
-      </button>
-      <button onClick={() => setShowCaseFile(true)}>
-        <img alt="case file" src={caseFileImage} width="50" height="50" />
-      </button>
+      <input id = "file" className='image-button' type = "image" alt="case file" src={caseFileImage} width="250" height="250" onClick={() => setShowCaseFile(true)} />
+      <input id = "phone" type = "image" alt="phone" src={phone} width="250" height="250" className='image-button' />
+      </div>
     </div>
   );
 }
