@@ -1,6 +1,8 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom'; 
 import cat from "./images/Cat.png";
 import caseFileImage from "./images/file.png";
+import phone from "./images/phone.png";
 import mic from "./images/mic.png"; 
 import checklist from "./images/checklist.png"; 
 
@@ -121,7 +123,7 @@ function Game() {
             </div>
           </div>
       )}
-      <button>phone</button>
+      <button><Link to="/phone"><img alt="phone" src={phone} width="50" height="50" /></Link></button>
       <button onClick={() => setShowCaseFile(true)}>
         <img alt="case file" src={caseFileImage} width="50" height="50" />
       </button>
