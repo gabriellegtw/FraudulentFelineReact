@@ -5,6 +5,13 @@ body {
     position:relative;
 }
 
+body {
+    background-image: url("./images/background.png");
+    background-size: cover;
+    background-position:0% 0%;
+    position:relative;
+}
+
 .image-button {
     flex: auto;
 }
