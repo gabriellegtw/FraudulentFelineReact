@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import cat from "./images/Cat.png";
+import cat from "./images/cat.png";
 import caseFileImage from "./images/file.png";
 import mic from "./images/mic.png"; 
 import phone from "./images/phone.png";
@@ -138,11 +138,10 @@ function Game() {
             </div>
           </div>
       )}
-      <input type = "image" id = "phone" alt="phone" src={phone} width="250" height="250" onClick = {() => {navigate("/phone")}}/>
       <input type = "image" id = "file" alt="case file" src={caseFileImage} width="250" height="250" onClick={() => setShowCaseFile(true)}/>
+      <input type = "image" id = "phone" alt="phone" src={phone} width="250" height="250" onClick = {() => {navigate("/phone")}}/>
       <audio ref={audioRef} src={catAudio} />
     </div>
-  );
   </div>
 )}
 
