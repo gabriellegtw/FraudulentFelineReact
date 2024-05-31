@@ -1,9 +1,10 @@
 import { useState } from 'react';
-import cat from "./images/Cat.png";
-import caseFileImage from "./images/casefile.png"; // Ensure you have the case file image imported
+import cat from "./images/cat.png";
+import caseFileImage from "./images/file.png"; // Ensure you have the case file image imported
 import mic from "./images/mic.png"; // Import the microphone image
-import checklist from "./images/checklist.jpg"; //Import checklist image
-
+import checklist from "./images/checklist.png"; // Import the checklist image
+import phone from "./images/phone.png"; // Import the phone image
+import './Game.css'; // For styling
 
 function Game() {
   const initialCaseFileContent = "Message says “This is BOP. There was a withdrawal of S$369 with your BOP account on 15 December at 20:31.\nIf unauthorised, visit https://jsnkgkdfgsl.securesg.site to stop the process.”";
@@ -62,7 +63,7 @@ function Game() {
         <div className="overlay">
           <div className="white-paper">
             <pre>{caseFileContent}</pre>
-            <button onClick={() => setShowCaseFile(false)}>Close</button>
+            <button className='image-button'onClick={() => setShowCaseFile(false)}>Close</button>
           </div>
         </div>
       )}
@@ -75,10 +76,10 @@ function Game() {
           </>
         )}
       </div>
-      <button onClick={handleMicrophoneClick}>
+      <button onClick={handleMicrophoneClick} className='image-button'>
         <img alt="mic" src={mic} width="50" height="50" />
       </button>
-      <button onClick={() => setShowChecklist(true)}>
+      <button className='image-button' onClick={() => setShowChecklist(true)}>
         <img alt="checklist" src={checklist} width="50" height="50" />
       </button>
       {showChecklist && (
@@ -103,7 +104,7 @@ function Game() {
             </div>
           </div>
       )}
-      <button>phone</button>
+      <button className='image-button'>phone</button>
       <button onClick={() => setShowCaseFile(true)}>
         <img alt="case file" src={caseFileImage} width="50" height="50" />
       </button>
