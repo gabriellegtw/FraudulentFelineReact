@@ -1,25 +1,71 @@
 import { useState } from 'react';
-import cat from "./Cat.png"
+import cat from "./images/Cat.png";
+import caseFileImage from "./images/casefile.png"; // Ensure you have the case file image imported
+import mic from "./images/mic.png"; // Import the microphone image
 
 function Game() {
+  const initialCaseFileContent = "Message says “This is BOP. There was a withdrawal of S$369 with your BOP account on 15 December at 20:31.\nIf unauthorised, visit https://jsnkgkdfgsl.securesg.site to stop the process.”";
   const [speaking, setSpeaking] = useState("");
+  const [showCaseFile, setShowCaseFile] = useState(false);
+  const [messageVisible, setMessageVisible] = useState(false);
+  const [clickCount, setClickCount] = useState(0);
+  const [caseFileContent, setCaseFileContent] = useState(initialCaseFileContent);
+
+  const handleMicrophoneClick = () => {
+    let catSpeak;
+    let newCaseFileContent = caseFileContent; // Store current case file content
+
+    if (clickCount === 0) {
+      catSpeak = "I received an SMS today from BOP (Bank of Pussy) saying that there have been unauthorized attempts to access my bank account. There is also a link in the SMS to stop the attempt. Should I click the link?";
+    } else if (clickCount === 1) {
+      catSpeak = "The message was sent from an unknown number.";
+      // If the cat says the number is unknown, append "Hi" to the case file content
+      newCaseFileContent += "\nThe message was sent from an unknown number.";
+    } else {
+      catSpeak = "I have no other details to share."
+    }
+    setSpeaking(catSpeak);
+    setMessageVisible(true);
+    setClickCount(prevCount => prevCount + 1);
+    setCaseFileContent(newCaseFileContent); // Update case file content
+  };
+
+  const handleContinueClick = () => {
+    setMessageVisible(false);
+    setSpeaking("");
+  };
 
   return (
-    <div className="game-container">
-      <container id = "cat-speech">
-      <img alt = "cat" src = {cat} width = "400" height = "300"></img> 
-      <p>{speaking}</p>
-      </container>
-      <button onClick = {() => {
-        const catSpeak = "I received an SMS today from BOP (Bank of Pussy) saying that there have been unauthorised attempts to access my bank account. There is also a link in the SMS to stop the attempt. Should I click the link?";
-        setSpeaking(catSpeak);
-      }}><img alt = "mic" src = "data:image/png;base64,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"/></button>
-      <button >checklist</button>
+    <div className="game-container" style={{ position: 'relative' }}>
+      {showCaseFile && (
+        <div className="overlay">
+          <div className="white-paper">
+            <pre>{caseFileContent}</pre>
+            <button onClick={() => setShowCaseFile(false)}>Close</button>
+          </div>
+        </div>
+      )}
+      <div id="cat-speech">
+        <img alt="cat" src={cat} width="400" height="300" />
+        {messageVisible && (
+          <>
+            <p>{speaking}</p>
+            <button onClick={handleContinueClick}>Continue</button>
+          </>
+        )}
+      </div>
+      <button onClick={handleMicrophoneClick}>
+        <img alt="mic" src={mic} width="50" height="50" />
+      </button>
+      <button>checklist</button>
       <button>phone</button>
-      <button>case file</button>
+      <button onClick={() => setShowCaseFile(true)}>
+        <img alt="case file" src={caseFileImage} width="50" height="50" />
+      </button>
     </div>
   );
 }
 
 export default Game;
+
 
