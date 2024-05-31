@@ -5,6 +5,7 @@ import caseFileImage from "./images/file.png";
 import mic from "./images/mic.png"; 
 import phone from "./images/phone.png";
 import checklist from "./images/checklist.png"; 
+import report from "./images/report.png";
 import catAudio from './meow.mp3';
 import "./Game.css";
 
@@ -20,11 +21,8 @@ function Game() {
   const [items, setItems] = useState([
       {id: 1, label: "Asked customer for more information"},
       {id: 2, label: "Highlighted suspicious details in case file"},
-      {id: 1, label: "Asked customer for more information"},
-      {id: 2, label: "Highlighted suspicious details in case file"},
       {id: 3, label: "Called the bank for more details"},
       {id: 4, label: "Called the lawyer for legal advice"},
-      {id: 5, label: "Called the police after confirming it is a scam"},
       {id: 5, label: "Called the police after confirming it is a scam"},
   ]);
 
@@ -69,6 +67,7 @@ function Game() {
 
   const handleBackClick = () => {
     setShowChecklist(false);
+    setShowReportContent(false);
   };
 
   const escapeRegExp = (string) => {
@@ -148,10 +147,24 @@ function Game() {
       )}
       <input type = "image" id = "file" alt="case file" src={caseFileImage} width="250" height="250" onClick={() => setShowCaseFile(true)}/>
       <input type = "image" id = "phone" alt="phone" src={phone} width="250" height="250" onClick = {() => {navigate("/phone")}}/>
+      <input type = "image" id = "report" alt = "report" src = {report} width="250" height="250" onClick={() => setShowReportContent(true)}report />
+      {showReportContent && (
+        <div className="overlay">
+          <div className="white-paper">
+          <p>Report to the police? (Click yes only if you are sure it is a scam)</p>
+            <div className='button-container'>
+              <Link to="/winpage" className="custom-button">Yes</Link>
+              <Link to="/losepage" className="custom-button">No</Link>
+            </div>
+            <button className = "regular-button" onClick={handleBackClick}>Back</button>
+          </div>
+        </div>
+      )}
       <audio ref={audioRef} src={catAudio} />
     </div>
   </div>
 )}
 
 export default Game;
+
 

@@ -40,19 +40,5 @@
     color: #666;
     margin-bottom: 30px;
   }
-  .winlosetitle {
-    font-family: 'Cursive', sans-serif;
-    font-size: 2em;
-    color: #333;
-    margin-bottom: 20px;
-  }
-
-  .winlose-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    background-color: #f8f9fa;
-  }
+  
   

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './Home.css'; // For styling
+import './Winlosepage.css'; // For styling
 
 function Losepage() {
     return (
