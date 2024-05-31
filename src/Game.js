@@ -79,7 +79,7 @@ function Game() {
       <button onClick={handleMicrophoneClick} className='image-button'>
         <img alt="mic" src={mic} width="50" height="50" />
       </button>
-      <button onClick={() => setShowChecklist(true)}>
+      <button className='image-button' onClick={() => setShowChecklist(true)}>
         <img alt="checklist" src={checklist} width="50" height="50" />
       </button>
       {showChecklist && (
@@ -104,7 +104,7 @@ function Game() {
             </div>
           </div>
       )}
-      <button>phone</button>
+      <button className='image-button'>phone</button>
       <button onClick={() => setShowCaseFile(true)}>
         <img alt="case file" src={caseFileImage} width="50" height="50" />
       </button>
