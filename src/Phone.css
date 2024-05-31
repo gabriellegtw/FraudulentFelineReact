@@ -1,3 +1,5 @@
+@import url(https://fonts.googleapis.com/css?family=Cedarville+Cursive:regular);
+
 .home-container1 {
     display: flex;
     flex-direction: column;
@@ -8,6 +10,7 @@
   }
 
   .container {
+    
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -20,13 +23,14 @@
 
   .sticky-tape.left {
     position: absolute;
-    top: 8.5%;
+    top: 3%;
 	transform: rotate(-45deg);
     max-width: 10%;
     height: auto;
 }
 
   .instructions {
+    font-family: 'Cedarville Cursive', cursive;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -62,4 +66,19 @@
   
   .numbers div:active {
     font-weight: bold;
+  }
+
+  .display-bar {
+    width: 100%;
+    height: 40px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    margin-bottom: 10px;
+  }
+
+  .custom-link {
+    color: white;
   }
