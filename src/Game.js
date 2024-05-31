@@ -1,11 +1,12 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import cat from "./images/Cat.png";
+import cat from "./images/cat.png";
 import caseFileImage from "./images/file.png";
 import mic from "./images/mic.png"; 
 import phone from "./images/phone.png";
 import checklist from "./images/checklist.png"; 
 import catAudio from './meow.mp3';
+import "./Game.css";
 
 function Game() {
   const initialCaseFileContent = "Message says “This is BOP (Bank of Pussy). There was a withdrawal of S$369 with your BOP account on 15 December at 20:31.\nIf unauthorised, visit https://bankofpussyhelpline.securesg.site to stop the process.”";
@@ -84,7 +85,7 @@ function Game() {
   };
 
   return (
-    <div className="game-container">
+    <div className="game-container"> 
       {showCaseFile && (
         <div className="overlay">
           <div className="white-paper">
@@ -97,10 +98,10 @@ function Game() {
       )}
       <div id="background-area">
         <div id = "cat">
-        <img alt="cat" src={cat} width="375" height="262" />
+        <img alt="cat" src={cat} width="375" height="260" />
         </div>
         <div id = "mic">
-        <input type = "image" alt = "mic" src = {mic} width="250" height="262" onClick={handleMicrophoneClick} className='image-button'/>
+        <input type = "image" alt = "mic" src = {mic} width="250" height="258" onClick={handleMicrophoneClick} className='image-button'/>
         </div>
         <div>
         {messageVisible && (
@@ -136,16 +137,14 @@ function Game() {
             </div>
           </div>
       )}
-      <button>
-        <Link to="/phone"><img alt="phone" src={phone} width="50" height="50" /></Link>
-      </button>
-      <button onClick={() => setShowCaseFile(true)}>
-        <img alt="case file" src={caseFileImage} width="50" height="50" />
-      </button>
+      <input type = "image" id = "phone" alt="phone" src={phone} width="250" height="250" />
+        <Link to="/phone"></Link>
+      <input type = "image" id = "file" alt="case file" src={caseFileImage} width="250" height="250" onClick={() => setShowCaseFile(true)}/>
       <audio ref={audioRef} src={catAudio} />
     </div>
   );
-}
+  </div>
+)}
 
 export default Game;
 
